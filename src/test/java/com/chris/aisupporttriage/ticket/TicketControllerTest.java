@@ -1,23 +1,43 @@
 package com.chris.aisupporttriage.ticket;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(TicketController.class)
 public class TicketControllerTest {
+    @MockitoBean
+    private TicketAnalysisService service;
+
     @Autowired
     private MockMvc mockMvc;
+
+    @BeforeEach
+    void setUp() {
+        when(service.analyze(any(AnalyzeTicketRequest.class)))
+                .thenReturn(new TriageResult(
+                        Category.OTHER,
+                        Severity.MEDIUM,
+                        "Automated analysis requires human review",
+                        "Dashboard",
+                        List.of("Review the incident details"),
+                        true
+                ));
+    }
 
     @Test
     public void testTicketController() throws Exception{
