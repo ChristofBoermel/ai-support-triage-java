@@ -4,6 +4,7 @@ import com.chris.aisupporttriage.ticket.AnalyzeTicketRequest;
 import com.chris.aisupporttriage.ticket.TriageModelClient;
 import com.chris.aisupporttriage.ticket.TriageResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.http.HttpHeaders;
@@ -47,7 +48,11 @@ public class DeepSeekTriageModelClient implements TriageModelClient{
         """;
 
     public DeepSeekTriageModelClient(DeepSeekProperties properties, ObjectMapper objectMapper) {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setReadTimeout(properties.timeout());
+        requestFactory.setConnectTimeout(properties.timeout());
         this.restClient = RestClient.builder()
+                .requestFactory(requestFactory)
                 .baseUrl(properties.baseUrl())
                 .defaultHeader(
                         HttpHeaders.AUTHORIZATION,

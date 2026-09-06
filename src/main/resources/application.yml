@@ -2,3 +2,4 @@ deepseek:
   base-url: https://api.deepseek.com
   model: deepseek-v4-flash
   api-key: ${DEEPSEEK_API_KEY}
+  timeout: 15s
