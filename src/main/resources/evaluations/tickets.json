@@ -1,0 +1,167 @@
+[
+  {
+    "name": "Reporting dashboard HTTP 500 after deployment",
+    "request": {
+      "description": "Finance users cannot access the reporting dashboard after yesterday's deployment. Authentication succeeds, but the dashboard returns HTTP 500.",
+      "customerId": "evaluation-001",
+      "affectedService": "Dashboard"
+    },
+    "expectedCategory": "DEPLOYMENT",
+    "expectedSeverity": "HIGH",
+    "expectedHumanReview": true
+  },
+  {
+    "name": "Single user password reset with workaround",
+    "request": {
+      "description": "One non-priority customer cannot sign in after resetting their password. A temporary access code works and there is no deadline.",
+      "customerId": "evaluation-002",
+      "affectedService": "Authentication"
+    },
+    "expectedCategory": "AUTHENTICATION",
+    "expectedSeverity": "LOW",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Finance team sign-in failure before close",
+    "request": {
+      "description": "The finance team in the EU region cannot sign in. Monthly close is due today and there is no known workaround.",
+      "customerId": "evaluation-003",
+      "affectedService": "Authentication"
+    },
+    "expectedCategory": "AUTHENTICATION",
+    "expectedSeverity": "HIGH",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Multi-region authentication outage",
+    "request": {
+      "description": "Finance and HR users in the EU and US regions cannot sign in to the software. No workaround is available.",
+      "customerId": "evaluation-004",
+      "affectedService": "Authentication"
+    },
+    "expectedCategory": "AUTHENTICATION",
+    "expectedSeverity": "CRITICAL",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Delayed non-critical export",
+    "request": {
+      "description": "One customer reports that a non-critical data export is delayed. Retrying the export works and there is no deadline.",
+      "customerId": "evaluation-005",
+      "affectedService": "Database"
+    },
+    "expectedCategory": "DATABASE",
+    "expectedSeverity": "LOW",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Single customer cannot save cost centres",
+    "request": {
+      "description": "One customer cannot save cost-centre changes. There is no contractual priority or deadline.",
+      "customerId": "evaluation-006",
+      "affectedService": "Database"
+    },
+    "expectedCategory": "DATABASE",
+    "expectedSeverity": "MEDIUM",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Finance team cannot post journal entries",
+    "request": {
+      "description": "The finance team cannot post journal entries because database writes fail. The close deadline is today and no workaround is available.",
+      "customerId": "evaluation-007",
+      "affectedService": "Database"
+    },
+    "expectedCategory": "DATABASE",
+    "expectedSeverity": "HIGH",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Multi-region transaction persistence outage",
+    "request": {
+      "description": "Customers in multiple regions cannot save transactions because the database is unavailable. No workaround is available.",
+      "customerId": "evaluation-008",
+      "affectedService": "Database"
+    },
+    "expectedCategory": "DATABASE",
+    "expectedSeverity": "CRITICAL",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Single customer dashboard failure after release",
+    "request": {
+      "description": "One customer cannot open their dashboard after a release. There is no deadline or contractual priority.",
+      "customerId": "evaluation-009",
+      "affectedService": "Dashboard"
+    },
+    "expectedCategory": "DEPLOYMENT",
+    "expectedSeverity": "MEDIUM",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Regional HR dashboard outage after release",
+    "request": {
+      "description": "The HR team in one region cannot access its dashboard after a release. No workaround is available.",
+      "customerId": "evaluation-010",
+      "affectedService": "Dashboard"
+    },
+    "expectedCategory": "DEPLOYMENT",
+    "expectedSeverity": "HIGH",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Multi-region outage after deployment",
+    "request": {
+      "description": "Core software is inaccessible in several regions immediately after deployment. No workaround is available.",
+      "customerId": "evaluation-011",
+      "affectedService": "Core platform"
+    },
+    "expectedCategory": "DEPLOYMENT",
+    "expectedSeverity": "CRITICAL",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Single non-urgent reporting failure",
+    "request": {
+      "description": "One customer cannot generate a non-urgent report. There is no deadline or contractual priority.",
+      "customerId": "evaluation-012",
+      "affectedService": "Reporting"
+    },
+    "expectedCategory": "REPORTING",
+    "expectedSeverity": "MEDIUM",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Finance team cannot close books",
+    "request": {
+      "description": "The finance team cannot close the books because reporting is unavailable. The deadline is today and no workaround is available.",
+      "customerId": "evaluation-013",
+      "affectedService": "Reporting"
+    },
+    "expectedCategory": "REPORTING",
+    "expectedSeverity": "HIGH",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Multi-region reporting outage",
+    "request": {
+      "description": "Reporting is unavailable to finance and HR teams across multiple regions. No workaround is available.",
+      "customerId": "evaluation-014",
+      "affectedService": "Reporting"
+    },
+    "expectedCategory": "REPORTING",
+    "expectedSeverity": "CRITICAL",
+    "expectedHumanReview": false
+  },
+  {
+    "name": "Unclear performance complaint",
+    "request": {
+      "description": "The system is slow and something is wrong.",
+      "customerId": "evaluation-015",
+      "affectedService": "not provided"
+    },
+    "expectedCategory": "OTHER",
+    "expectedSeverity": "MEDIUM",
+    "expectedHumanReview": true
+  }
+]
