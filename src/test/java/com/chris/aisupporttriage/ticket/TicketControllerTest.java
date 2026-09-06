@@ -40,7 +40,7 @@ public class TicketControllerTest {
     }
 
     @Test
-    public void testTicketController() throws Exception{
+    public void analyzesValidTicket() throws Exception{
         String url = "/api/tickets/analyze";
 
         mockMvc.perform(post(url)
@@ -53,14 +53,22 @@ public class TicketControllerTest {
                 .andExpect(jsonPath("$.category").value("OTHER"))
                 .andExpect(jsonPath("$.severity").value("MEDIUM"))
                 .andExpect(jsonPath("$.requiresHumanReview").value(true));
+    }
+
+    @Test
+    public void returnsValidationErrorForBlankDescription() throws Exception {
+        String url = "/api/tickets/analyze";
 
         mockMvc.perform(post(url)
-                .contentType(MediaType.APPLICATION_JSON).content("""
+                        .contentType(MediaType.APPLICATION_JSON).content("""
                         {
                             "description" : " "
                         }
                         """))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("VALIDATION_ERROR"))
+                .andExpect(jsonPath("$.message").value("Request validation failed"))
+                .andExpect(jsonPath("$.fieldErrors.description").value("must not be blank"));
     }
 }
 
